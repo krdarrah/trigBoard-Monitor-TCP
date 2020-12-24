@@ -39,11 +39,11 @@ void loop() {
     btStop();
     deviceConnected = false;
     digitalWrite(LEDpin, LOW);
-    //    if (WiFi.status() != WL_CONNECTED) {
-    //      Serial.println("WiFi Disconnected on its own");
-    //      delay(100);
-    //      ESP.restart();
-    //    }
+        if (WiFi.status() != WL_CONNECTED) {
+          Serial.println("WiFi Disconnected on its own");
+          delay(100);
+          ESP.restart();
+        }
   }
   if ((millis() - tcpStartTime) > 1000  && WiFi.status() == WL_CONNECTED) {
     checkForMessage();

@@ -32,8 +32,8 @@ void WiFiEvent(WiFiEvent_t event) {
     case SYSTEM_EVENT_STA_DISCONNECTED:
       Serial.println("WiFi lost connection");
       delay(1000);
-      if (!deviceConnected)//just in case you're changing wifi settings via ble
-        ESP.restart();
+//      if (!deviceConnected)//just in case you're changing wifi settings via ble
+//        ESP.restart();
       break;
     default: break;
   }
