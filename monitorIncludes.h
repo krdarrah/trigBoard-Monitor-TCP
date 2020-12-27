@@ -13,6 +13,8 @@ const int ARDUINO_RX_PIN = 33; //should connect to TX of the Serial MP3 Player m
 const int ARDUINO_TX_PIN = 32; //connect to RX of the module
 SoftwareSerial mp3(ARDUINO_RX_PIN, ARDUINO_TX_PIN);
 bool donePlaying = false;//so we know when done playing, then kill power to the speaker
+bool silenceButtonWasPressed = false;
+bool firstBoot = true;
 
 //I forgot where this code came from, but from somewhere where you buy these mp3 players
 unsigned long firstPacketTime;

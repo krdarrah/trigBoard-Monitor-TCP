@@ -6,7 +6,7 @@
 
 #include "monitorincludes.h"//special stuff needed just for this setup, mp3 player and pins
 #include "includes.h"
-const char fwVersion[] = "12/23/20 MONITOR TCP";
+const char fwVersion[] = "12/27/20 MONITOR TCP";
 
 void setup() {
   pinMode(LEDpin, OUTPUT);
@@ -39,14 +39,18 @@ void loop() {
     btStop();
     deviceConnected = false;
     digitalWrite(LEDpin, LOW);
-        if (WiFi.status() != WL_CONNECTED) {
-          Serial.println("WiFi Disconnected on its own");
-          delay(100);
-          ESP.restart();
-        }
+    if (WiFi.status() != WL_CONNECTED) {
+      Serial.println("WiFi Disconnected on its own");
+      delay(100);
+      ESP.restart();
+    }
   }
   if ((millis() - tcpStartTime) > 1000  && WiFi.status() == WL_CONNECTED) {
+    //if (connectWiFi()) {
     checkForMessage();
+    //}
+    //WiFi.disconnect();
+    Serial.println("done");
     tcpStartTime = millis();
   }
 }
